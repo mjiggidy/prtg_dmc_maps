@@ -1,0 +1,45 @@
+<!--DMC - Deluxe Maps Cool: NoMachine Status-->
+
+<div class="map_object map_table" id="<@itemid>" objectid="<@objectid>" subid="<@subid>" style="overflow:auto;<#mapobject type="coordinates" subid="<@subid>" mode="<@editmode>">">
+<#mapobject type="objectgrip" mode="<@editmode>">
+<#mapobject type="htmlbefore" subid="<@subid>">
+<#checkobjecttype objecttype="probenode,group,device" nicemessage="true" id="<@objectid>">
+
+
+		<div class="maptablecontainer" style="overflow:hidden">
+			<#objectproperty name="name" var="objname" id="<@objectid>">
+			<h2><#inserthtml html="NoMachine Status (@objname)" varexpand="html"></h2>
+			<#lang key="html.mapobjects.dmc-nomachine.tabletitle.up" default="Up" var="tabletitleUp">
+			<#table tableid="sensortableUp"
+					   content="sensors"
+					   columns="sensor,device,minigraph"
+					   sortby="device"
+					   filter_tags="@tag(<@tagfilterstring> %2bportsensor)"
+					   filter_status="3"
+					   count="5"
+					   varexpand="tabletitle"
+					   tabletitle="@tabletitleUp"
+					   id="<@objectid>"
+			>
+			
+			<#table tableid="sensortableDown"
+					   content="sensors"
+					   columns="sensor,device,minigraph"
+					   sortby="device"
+					   filter_tags="@tag(<@tagfilterstring> %2bportsensor)"
+					   filter_status="1"
+					   filter_status="2"
+					   filter_status="4"
+					   filter_status="5"
+					   filter_status="13"
+					   filter_status="14"
+					   count="5"
+					   tabletitle="Down"
+					   id="<@objectid>"
+			>
+			
+		</div>
+
+
+<#mapobject type="htmlafter" subid="<@subid>">
+</div>
